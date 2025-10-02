@@ -20,8 +20,8 @@ const SearchFilter = ({ icon, placeholder}) => {
         
     }}
 >
-     <FontAwesome name={icon} size={20} color="#f96163"/>
-     <TextInput style={{ paddingLeft: 10, fontSize: 16, color: '#808080' }}> 
+     <FontAwesome name={icon} size={30} color="#f96163"/>
+     <TextInput style={{ paddingLeft: 12, fontSize: 16, color: '#808080' }}> 
         {placeholder}
      </TextInput>
     </View>
