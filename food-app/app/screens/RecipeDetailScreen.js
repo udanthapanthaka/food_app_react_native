@@ -9,6 +9,8 @@ const RecipeDetailScreen = () => {
   const params = useLocalSearchParams();
   const item = params.item ? JSON.parse(params.item) : null;
 
+ const steps = item.steps || [];
+
   if (!item) {
     return (
       <View style={styles.centered}>
@@ -70,6 +72,15 @@ const RecipeDetailScreen = () => {
           <Text style={styles.description}>
             A delicious {item.name} recipe that's perfect for any occasion. Made with fresh ingredients and packed with flavor.
           </Text>
+          <Text style={styles.sectionTitle}>How to Cook</Text>
+          <View style={styles.stepsList}>
+            {steps.map((step, idx) => (
+              <View key={idx} style={styles.stepItem}>
+                <Text style={styles.stepNumber}>{idx + 1}.</Text>
+                <Text style={styles.stepText}>{step}</Text>
+              </View>
+            ))}
+          </View>
         </ScrollView>
       </View>
     </View>
@@ -77,6 +88,30 @@ const RecipeDetailScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  // ...existing styles...
+  stepsList: {
+    marginTop: 8,
+    marginBottom: 24,
+  },
+  stepItem: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginBottom: 10,
+  },
+  stepNumber: {
+    fontWeight: "bold",
+    color: "#f96163",
+    marginRight: 8,
+    fontSize: 16,
+    marginTop: 2,
+  },
+  stepText: {
+    flex: 1,
+    color: "#444",
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  // ...rest of your styles...
   centered: {
     flex: 1, justifyContent: "center", alignItems: "center"
   },
